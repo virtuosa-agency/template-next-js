@@ -60,7 +60,7 @@ export default function CookiesPage() {
                 onClick={() => toggleArticle(index)}
                 className="flex w-full items-center justify-between text-left"
               >
-                <h2 className="text-xl font-semibold">{article.title}</h2>
+                <p className="text-xl font-semibold">{article.title}</p>
                 <Icon
                   icon="mdi:chevron-down"
                   className={`transform transition-transform duration-200 ${

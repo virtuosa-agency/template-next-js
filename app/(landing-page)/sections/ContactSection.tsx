@@ -78,9 +78,9 @@ export const ContactSection = () => {
       <div className="grid w-full grid-cols-1 gap-0 lg:grid-cols-2 lg:gap-24">
         <div className="flex flex-col gap-[32px]">
           <div className="flex flex-col gap-[18px]">
-            <h2 className="font-syne text-[26px] text-secondary md:text-[32px]">
+            <p className="font-syne text-[26px] text-secondary md:text-[32px]">
               Template Contact Section
-            </h2>
+            </p>
             <p className="text-lg text-secondary/75">
               This is a demo contact form for the Next.js template. Replace with
               your actual contact information.
@@ -119,9 +119,9 @@ export const ContactSection = () => {
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-[3px] border-tertiary">
                   <Icon icon="mdi:check" className="h-8 w-8 text-tertiary" />
                 </div>
-                <h3 className="mb-4 font-syne text-2xl text-secondary">
+                <p className="mb-4 font-syne text-2xl text-secondary">
                   Message sent!
-                </h3>
+                </p>
                 <p className="mb-8 text-secondary/75">
                   Thank you for contacting us. We'll get back to you as soon as
                   possible.
@@ -133,9 +133,9 @@ export const ContactSection = () => {
               </div>
             ) : (
               <>
-                <h3 className="mb-6 font-syne text-2xl text-secondary">
+                <p className="mb-6 font-syne text-2xl text-secondary">
                   Contact Form
-                </h3>
+                </p>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   {/* Honeypot field */}

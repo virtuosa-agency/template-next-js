@@ -7,9 +7,9 @@ export const CTASection = () => {
   return (
     <SectionLayout className="mt-120">
       <div className="mx-auto max-w-4xl px-6 text-center">
-        <h2 className="mb-6 text-3xl font-medium text-gray-900 md:text-4xl">
+        <p className="mb-6 text-3xl font-medium text-gray-900 md:text-4xl">
           Need some help?
-        </h2>
+        </p>
 
         <p className="mb-12 text-lg text-gray-600">
           Feel stuck ? Need some help ? We are here to help you.
