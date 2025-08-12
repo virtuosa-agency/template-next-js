@@ -1,4 +1,4 @@
-// app/meta/jsonLd.ts est le fichier de configuration pour le JSON-LD de votre application
+// app/meta/jsonLd.ts is the configuration file for your application's JSON-LD
 
 export const jsonLd = {
   "@context": "https://schema.org",
@@ -9,7 +9,7 @@ export const jsonLd = {
   logo: "https://www.template-next-js.com/images/logo.png",
   image: "https://www.template-next-js.com/api/og",
   description:
-    "Le haut de gamme digital n'a jamais été aussi accessible. Site web, image de marque, notoriété : on construit tout, sur-mesure.",
+    "Premium digital solutions have never been so accessible. Website, brand identity, notoriety: we build everything, custom-made.",
   areaServed: {
     "@type": "Country",
     name: "France",
@@ -23,20 +23,18 @@ export const jsonLd = {
   makesOffer: [
     {
       "@type": "Offer",
-      name: "Création de site web",
-      description:
-        "Sites web sur-mesure, design premium et développement optimisé",
+      name: "Website Creation",
+      description: "Custom websites, premium design and optimized development",
     },
     {
       "@type": "Offer",
-      name: "Image de marque",
-      description: "Identité visuelle complète et stratégie de marque",
+      name: "Brand Identity",
+      description: "Complete visual identity and brand strategy",
     },
     {
       "@type": "Offer",
-      name: "Notoriété digitale",
-      description:
-        "Stratégie de visibilité et développement de la présence en ligne",
+      name: "Digital Notoriety",
+      description: "Visibility strategy and online presence development",
     },
   ],
   address: {
@@ -63,7 +61,7 @@ export const jsonLd = {
     },
     result: {
       "@type": "ContactPoint",
-      name: "Demande de contact",
+      name: "Contact Request",
     },
   },
   sameAs: [

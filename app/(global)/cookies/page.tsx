@@ -35,7 +35,9 @@ export default function CookiesPage() {
               </ul>
             )}
 
-            {section.additionalText?.map((text, i) => <p key={i}>{text}</p>)}
+            {section.additionalText?.map((text, i) => (
+              <p key={i}>{text}</p>
+            ))}
 
             {section.contactInfo && (
               <p className="font-bold">{section.contactInfo}</p>
@@ -48,7 +50,7 @@ export default function CookiesPage() {
 
   return (
     <section>
-      <BannerSection title="Gestion des Cookies" />
+      <BannerSection title="Cookie Management" />
       <BreadcrumbHomepage className="text-black" />
       <div className="w-full px-4 py-20 ph:px-24 md:px-48 lg:px-72 xl:px-96">
         <div className="space-y-4 text-black">

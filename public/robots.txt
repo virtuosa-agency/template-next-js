@@ -1,5 +1,5 @@
-# Robots.txt pour Mudo Club Argenteuil
-# Dernière mise à jour: 2025-08-12
+# Robots.txt pour Template Next.js
+# Template générique pour projets Next.js
 
 # Tous les robots
 User-agent: *
@@ -22,11 +22,8 @@ Disallow: /.env
 Disallow: /.git/
 Disallow: /node_modules/
 
-# Host principal
-Host: https://www.mudoclubargenteuil.fr
-
-# Sitemaps
-Sitemap: https://www.mudoclubargenteuil.fr/sitemap.xml
+# Sitemaps (à configurer selon le domaine de déploiement)
+# Sitemap: https://votre-domaine.com/sitemap.xml
 
 # Délai de crawl pour éviter de surcharger le serveur
 Crawl-delay: 1

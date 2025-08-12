@@ -16,7 +16,7 @@ export const BreadcrumbHomepage = ({ className }: { className?: string }) => {
         <Link href="/" className="group font-light text-black">
           <div className="flex items-center gap-1">
             <Icon icon="mdi:chevron-left" className="h-5 w-5 text-black" />
-            <span className="duration-300">Retour à l&apos;accueil</span>
+            <span className="duration-300">Back to home</span>
           </div>
         </Link>
       </div>

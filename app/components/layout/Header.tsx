@@ -26,7 +26,7 @@ export function Header({ className = "" }: HeaderProps) {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Vérifier si on est sur la page home et sur mobile
+  // Check if we're on the home page and on mobile
   const isHomePage = pathname === "/";
   const shouldUseWhiteOnMobile = isHomePage;
 
@@ -53,7 +53,7 @@ export function Header({ className = "" }: HeaderProps) {
         setIsVisible(isScrollingUp || isNearTop);
         setIsAtTop(currentScrollY === 0);
 
-        // On met à jour le background uniquement quand on scroll vers le haut
+        // Update background only when scrolling up
         if (isScrollingUp && !isNearTop) {
           setShouldShowBackground(true);
         } else if (isNearTop) {

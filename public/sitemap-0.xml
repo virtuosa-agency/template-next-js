@@ -2,36 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
+  <!-- Template sitemap pour projets Next.js -->
+  <!-- À configurer selon le domaine de déploiement et les pages de votre projet -->
+  
+  <!-- Page d'accueil -->
+  <!-- 
   <url>
-    <loc>https://www.mudoclubargenteuil.fr/</loc>
-    <lastmod>2025-08-12T10:00:00.000Z</lastmod>
+    <loc>https://votre-domaine.com/</loc>
+    <lastmod>2025-01-01T00:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link 
       rel="alternate" 
       hreflang="fr-FR" 
-      href="https://www.mudoclubargenteuil.fr/"/>
+      href="https://votre-domaine.com/"/>
   </url>
+  -->
   
+  <!-- Exemple de page légale -->
+  <!-- 
   <url>
-    <loc>https://www.mudoclubargenteuil.fr/mentions-legales</loc>
-    <lastmod>2025-08-12T10:00:00.000Z</lastmod>
+    <loc>https://votre-domaine.com/mentions-legales</loc>
+    <lastmod>2025-01-01T00:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
     <xhtml:link 
       rel="alternate" 
       hreflang="fr-FR" 
-      href="https://www.mudoclubargenteuil.fr/mentions-legales"/>
+      href="https://votre-domaine.com/mentions-legales"/>
   </url>
+  -->
   
+  <!-- Exemple de page cookies -->
+  <!-- 
   <url>
-    <loc>https://www.mudoclubargenteuil.fr/cookies</loc>
-    <lastmod>2025-08-12T10:00:00.000Z</lastmod>
+    <loc>https://votre-domaine.com/cookies</loc>
+    <lastmod>2025-01-01T00:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
     <xhtml:link 
       rel="alternate" 
       hreflang="fr-FR" 
-      href="https://www.mudoclubargenteuil.fr/cookies"/>
+      href="https://votre-domaine.com/cookies"/>
   </url>
+  -->
+  
 </urlset>
