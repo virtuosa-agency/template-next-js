@@ -35,7 +35,7 @@ export function Footer() {
       <div className="text-center">
         <p className="text-sm text-secondary">
           © {currentYear} <span className="font-bold">XX</span>. All rights
-          reserved. Website developed by{" "}
+          reserved. Developed by{" "}
           <Link
             href="https://www.virtuosa.fr/"
             className="font-bold hover:text-secondary/75"

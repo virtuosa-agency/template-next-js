@@ -6,14 +6,11 @@
 // You define the themes of your application
 
 /** @type {import('tailwindcss').Config} */
-const { nextui } = require("@nextui-org/react");
-
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {
@@ -53,31 +50,6 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    nextui({
-      prefix: "nextui",
-      addCommonColors: false,
-      defaultTheme: "dark",
-      defaultExtendTheme: "dark",
-      themes: {
-        light: {
-          colors: {
-            primary: {
-              foreground: "#fff",
-              DEFAULT: "#6268F1",
-            },
-          },
-        },
-        dark: {
-          colors: {
-            primary: {
-              foreground: "#fff",
-              DEFAULT: "#6268F1",
-            },
-          },
-        },
-      },
-    }),
-  ],
+  plugins: [],
   darkMode: "class",
 };
