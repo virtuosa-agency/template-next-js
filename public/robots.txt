@@ -1,24 +1,32 @@
-# *
+# Robots.txt pour Template Next.js
+# Template générique pour projets Next.js
+
+# Tous les robots
 User-agent: *
 Allow: /
-Disallow: /api
-Disallow: /404
-Disallow: /500
-Disallow: /_next
-Disallow: /static
+
+# Empêcher l'accès aux fichiers sensibles
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
 Disallow: /*.json$
 Disallow: /*.js$
 Disallow: /*.css$
+Disallow: /*.map$
+Disallow: /404
+Disallow: /500
+Disallow: /error
 
-# Host
-Host: https://www.mudoclubargenteuil.fr
+# Empêcher l'accès aux fichiers de développement
+Disallow: /.env
+Disallow: /.git/
+Disallow: /node_modules/
 
-# Sitemaps
-Sitemap: https://www.mudoclubargenteuil.fr/sitemap.xml
-Sitemap: https://www.mudoclubargenteuil.fr/sitemap-0.xml
+# Sitemaps (à configurer selon le domaine de déploiement)
+# Sitemap: https://votre-domaine.com/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 10
+# Délai de crawl pour éviter de surcharger le serveur
+Crawl-delay: 1
 
 # Cache
 Cache-Control: max-age=3600

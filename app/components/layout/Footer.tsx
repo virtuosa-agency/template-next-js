@@ -18,14 +18,14 @@ export function Footer() {
             href="/cookies"
             className="text-sm text-secondary hover:text-secondary/75"
           >
-            Gestion des cookies
+            Cookie Management
           </Link>
 
           <Link
             href="/mentions-legales"
             className="text-sm text-secondary hover:text-secondary/75"
           >
-            Mentions légales
+            Legal Notice
           </Link>
         </div>
       </div>
@@ -34,8 +34,8 @@ export function Footer() {
 
       <div className="text-center">
         <p className="text-sm text-secondary">
-          © {currentYear} <span className="font-bold">XX</span>. Tous droits
-          réservés. Site web développé par{" "}
+          © {currentYear} <span className="font-bold">XX</span>. All rights
+          reserved. Developed by{" "}
           <Link
             href="https://www.virtuosa.fr/"
             className="font-bold hover:text-secondary/75"

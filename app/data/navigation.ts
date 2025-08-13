@@ -5,5 +5,5 @@ export interface NavigationItem {
 
 export const navigation: NavigationItem[] = [
   { name: "Services", href: "/#services" },
-  { name: "Projets réalisés", href: "/#projects" },
+  { name: "Completed Projects", href: "/#projects" },
 ];

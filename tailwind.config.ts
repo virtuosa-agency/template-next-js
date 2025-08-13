@@ -1,20 +1,16 @@
-// tailwind.config.ts est le fichier de configuration pour Tailwind CSS
-// Vous définissez ici les styles globaux de votre application mais surtout les variants de taille d'écran
-// Vous définissez aussi les couleurs principales de votre application
-// Vous définissez les fonts de votre application
-// Vous définissez les espacements de votre application
-// Vous définissez les animations de votre application
-// Vous définissez les thèmes de votre application
+// Here you define the global styles of your application but especially the screen size variants
+// You also define the main colors of your application
+// You define the fonts of your application
+// You define the spacing of your application
+// You define the animations of your application
+// You define the themes of your application
 
 /** @type {import('tailwindcss').Config} */
-const { nextui } = require("@nextui-org/react");
-
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {
@@ -54,31 +50,6 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    nextui({
-      prefix: "nextui",
-      addCommonColors: false,
-      defaultTheme: "dark",
-      defaultExtendTheme: "dark",
-      themes: {
-        light: {
-          colors: {
-            primary: {
-              foreground: "#fff",
-              DEFAULT: "#6268F1",
-            },
-          },
-        },
-        dark: {
-          colors: {
-            primary: {
-              foreground: "#fff",
-              DEFAULT: "#6268F1",
-            },
-          },
-        },
-      },
-    }),
-  ],
+  plugins: [],
   darkMode: "class",
 };

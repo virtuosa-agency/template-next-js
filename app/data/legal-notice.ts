@@ -10,108 +10,107 @@ export interface LegalArticle {
 
 export const legalData: LegalArticle[] = [
   {
-    title: "Mentions Légales",
+    title: "Legal Notice",
     content: [
       {
         mainText:
-          "Le présent template Next.js est édité et géré par Virtuosa pour le compte de Template Next.js :",
+          "This Next.js template is published and managed by Virtuosa on behalf of Template Next.js:",
       },
       {
         bulletPoints: [
-          "Propriétaire et éditeur du template : Virtuosa",
-          "Contact éditeur : agence@virtuosa.fr",
-          "Projet représenté : Template Next.js",
-          "Statut juridique : Template open source sous licence MIT",
-          "Secteur d'intervention : Développement web et applications",
-          "Contact : agence@virtuosa.fr",
-          "Responsable de publication : Virtuosa",
+          "Template owner and publisher: Virtuosa",
+          "Publisher contact: agence@virtuosa.fr",
+          "Project represented: Template Next.js",
+          "Legal status: Open source template under MIT license",
+          "Business sector: Web development and applications",
+          "Contact: agence@virtuosa.fr",
+          "Publication manager: Virtuosa",
         ],
       },
       {
         additionalText: [
-          "Template Next.js est un projet de template moderne et optimisé pour le développement d'applications web avec Next.js, React et TypeScript.",
-          "Le template est fourni gratuitement et peut être utilisé pour des projets personnels et commerciaux selon les termes de la licence MIT.",
-          "Pour toute problématique technique ou erreur constatée sur le template, contactez Virtuosa : agence@virtuosa.fr",
-          "Pour toute information concernant le développement web et les templates : agence@virtuosa.fr",
+          "Template Next.js is a modern and optimized template project for web application development with Next.js, React and TypeScript.",
+          "The template is provided free of charge and can be used for personal and commercial projects according to the terms of the MIT license.",
+          "For any technical issues or errors found on the template, contact Virtuosa: agence@virtuosa.fr",
+          "For any information regarding web development and templates: agence@virtuosa.fr",
         ],
       },
     ],
   },
   {
-    title: "Protection des Données (RGPD)",
+    title: "Data Protection (GDPR)",
     content: [
       {
         mainText:
-          "Le template peut inclure des formulaires de contact qui collectent les informations suivantes : nom, email et message. Ces données sont collectées et traitées par Virtuosa uniquement pour :",
+          "The template may include contact forms that collect the following information: name, email and message. This data is collected and processed by Virtuosa solely for:",
       },
       {
         bulletPoints: [
-          "Transmettre vos demandes de support et de contact via email",
-          "Aucune donnée n'est stockée en base de données par défaut",
-          "Les informations sont utilisées uniquement pour l'envoi du message et sont ensuite supprimées",
-          "Aucun traitement ultérieur n'est effectué sur ces données",
+          "Transmitting your support and contact requests via email",
+          "No data is stored in a database by default",
+          "Information is used solely for sending the message and is then deleted",
+          "No subsequent processing is performed on this data",
         ],
       },
       {
         additionalText: [
-          "Les formulaires inclus dans le template utilisent des systèmes de protection contre les spams qui n'affectent pas votre vie privée.",
-          "Conformément au RGPD et à la loi Informatique et Libertés du 6 janvier 1978 modifiée, vous disposez des droits suivants :",
-          "Droit d'accès, de rectification et de suppression de vos données",
-          "Droit d'opposition ou de limitation au traitement",
-          "Droit à la portabilité de vos données",
+          "The forms included in the template use spam protection systems that do not affect your privacy.",
+          "In accordance with GDPR and the French Data Protection Act of January 6, 1978 as amended, you have the following rights:",
+          "Right of access, rectification and deletion of your data",
+          "Right to object to or limit processing",
+          "Right to data portability",
         ],
       },
       {
-        contactInfo: "Pour exercer vos droits : agence@virtuosa.fr",
+        contactInfo: "To exercise your rights: agence@virtuosa.fr",
       },
       {
         mainText:
-          "Cookies : Le template peut utiliser des cookies pour améliorer votre expérience. Vous pouvez les désactiver via les paramètres de votre navigateur.",
+          "Cookies: The template may use cookies to improve your experience. You can disable them through your browser settings.",
       },
     ],
   },
   {
-    title: "Propriété Intellectuelle",
+    title: "Intellectual Property",
     content: [
       {
         mainText:
-          "La structure du template, les composants, les styles et tout autre contenu sont la propriété exclusive de Virtuosa, sauf mention contraire.",
+          "The template structure, components, styles and all other content are the exclusive property of Virtuosa, unless otherwise stated.",
       },
       {
         bulletPoints: [
-          "Toute reproduction (totale ou partielle) est interdite sans autorisation écrite de Virtuosa.",
-          "Les marques et logos figurant sur ce template sont protégés et leur réutilisation non autorisée est passible de poursuites.",
+          "Any reproduction (total or partial) is prohibited without written authorization from Virtuosa.",
+          "The brands and logos appearing on this template are protected and their unauthorized reuse is subject to legal proceedings.",
         ],
       },
     ],
   },
   {
-    title: "Conditions Générales d'Utilisation (CGU)",
+    title: "Terms of Use",
     content: [
       {
-        mainText:
-          "En utilisant le template Next.js de Virtuosa, vous acceptez de :",
+        mainText: "By using the Virtuosa Next.js template, you agree to:",
       },
       {
         bulletPoints: [
-          "Respecter les lois en vigueur et les droits de propriété intellectuelle",
-          "Utiliser le template uniquement pour des finalités légitimes (développement d'applications)",
-          "Ne pas perturber le bon fonctionnement du template (virus, piratage, etc.)",
+          "Respect applicable laws and intellectual property rights",
+          "Use the template only for legitimate purposes (application development)",
+          "Not disrupt the proper functioning of the template (viruses, hacking, etc.)",
         ],
       },
       {
         additionalText: [
-          "Responsabilités : Virtuosa s'efforce d'assurer l'exactitude des informations techniques affichées. Toutefois, nous ne pouvons être tenus responsables en cas d'erreur ou de dysfonctionnement.",
+          "Responsibilities: Virtuosa strives to ensure the accuracy of the technical information displayed. However, we cannot be held responsible in case of error or malfunction.",
         ],
       },
     ],
   },
   {
-    title: "Acceptation",
+    title: "Acceptance",
     content: [
       {
         mainText:
-          "En utilisant le template Next.js de Virtuosa, vous déclarez avoir lu et accepté l'ensemble de ces mentions légales et CGU.",
+          "By using the Virtuosa Next.js template, you declare that you have read and accepted all of these legal notices and terms of use.",
       },
     ],
   },

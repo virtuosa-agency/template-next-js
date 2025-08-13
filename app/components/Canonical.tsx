@@ -16,20 +16,19 @@ export function Canonical() {
       existingCanonical.remove();
     }
 
-    // Créer et ajouter le nouveau canonical
-    const link = document.createElement("link");
-    link.rel = "canonical";
-    link.href = `${BASE_URL}${pathname}`;
-    document.head.appendChild(link);
+    // Create and add the new canonical
+    const canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    canonical.href = `${BASE_URL}${pathname}`;
+    document.head.appendChild(canonical);
 
-    // Cleanup lors du démontage du composant
+    // Cleanup on component unmount
     return () => {
-      const canonical = document.querySelector('link[rel="canonical"]');
-      if (canonical) {
-        canonical.remove();
+      if (existingCanonical) {
+        document.head.appendChild(existingCanonical);
       }
     };
-  }, [pathname]); // Se déclenche à chaque changement de pathname
+  }, [pathname]); // Triggers on each pathname change
 
   return null; // Le composant ne rend rien visuellement
 }

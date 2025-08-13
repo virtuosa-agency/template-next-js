@@ -26,7 +26,7 @@ export function Header({ className = "" }: HeaderProps) {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Vérifier si on est sur la page home et sur mobile
+  // Check if we're on the home page and on mobile
   const isHomePage = pathname === "/";
   const shouldUseWhiteOnMobile = isHomePage;
 
@@ -53,7 +53,7 @@ export function Header({ className = "" }: HeaderProps) {
         setIsVisible(isScrollingUp || isNearTop);
         setIsAtTop(currentScrollY === 0);
 
-        // On met à jour le background uniquement quand on scroll vers le haut
+        // Update background only when scrolling up
         if (isScrollingUp && !isNearTop) {
           setShouldShowBackground(true);
         } else if (isNearTop) {
@@ -158,15 +158,7 @@ export function Header({ className = "" }: HeaderProps) {
             ))}
             <div style={{ display: "flex", alignItems: "center" }}>
               <div style={{ display: "flex", alignItems: "center" }}>
-                <PrimaryButton
-                  text="Contact"
-                  navigateTo="/#contact"
-                  variant={
-                    !isHomePage || shouldShowBackground
-                      ? "secondary"
-                      : undefined
-                  }
-                />
+                <PrimaryButton text="Contact" navigateTo="/#contact" />
               </div>
             </div>
           </div>
@@ -183,7 +175,7 @@ export function Header({ className = "" }: HeaderProps) {
                 className="h-8 w-8"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#4E6B59"
+                stroke="#000000"
                 strokeWidth="2"
               >
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -191,15 +183,9 @@ export function Header({ className = "" }: HeaderProps) {
               </svg>
             ) : (
               <div className="flex flex-col gap-1.5">
-                <span
-                  className={`block h-0.5 w-8 ${shouldShowBackground ? "bg-secondary" : shouldUseWhiteOnMobile ? "bg-primary" : "bg-secondary"} transition-all duration-300`}
-                />
-                <span
-                  className={`block h-0.5 w-8 ${shouldShowBackground ? "bg-secondary" : shouldUseWhiteOnMobile ? "bg-primary" : "bg-secondary"} transition-all duration-300`}
-                />
-                <span
-                  className={`block h-0.5 w-8 ${shouldShowBackground ? "bg-secondary" : shouldUseWhiteOnMobile ? "bg-primary" : "bg-secondary"} transition-all duration-300`}
-                />
+                <span className="block h-0.5 w-8 bg-secondary transition-all duration-300" />
+                <span className="block h-0.5 w-8 bg-secondary transition-all duration-300" />
+                <span className="block h-0.5 w-8 bg-secondary transition-all duration-300" />
               </div>
             )}
           </button>
@@ -252,7 +238,6 @@ export function Header({ className = "" }: HeaderProps) {
                     text="Contact"
                     navigateTo="/#contact"
                     className="!text-lg font-light"
-                    variant="secondary"
                   />
                 </motion.div>
               </motion.div>

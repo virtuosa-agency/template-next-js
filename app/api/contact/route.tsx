@@ -71,7 +71,7 @@ export async function POST(request: Request) {
     <div style="max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
       <!-- Header -->
       <div style="background-color: #D91F10; padding: 40px 30px; text-align: center;">
-        <h1 style="color: #FFFFFF; margin: 0; font-size: 28px; font-weight: 700;">New Message</h1>
+        <p style="color: #FFFFFF; margin: 0; font-size: 28px; font-weight: 700;">New Message</p>
         <p style="color: #FFFFFF; margin: 10px 0 0; font-size: 16px;">
           Via the contact form
         </p>
@@ -80,9 +80,9 @@ export async function POST(request: Request) {
       <!-- Main content -->
       <div style="padding: 40px 30px; background-color: #FFFFFF;">
         <div style="margin-bottom: 35px;">
-          <h2 style="color: #D91F10; font-size: 20px; margin: 0 0 25px 0; font-weight: 600; border-bottom: 1px solid #e0e0e0; padding-bottom: 12px;">
+          <p style="color: #D91F10; font-size: 20px; margin: 0 0 25px 0; font-weight: 600; border-bottom: 1px solid #e0e0e0; padding-bottom: 12px;">
             Contact Information
-          </h2>
+          </p>
           
           <div style="display: table; width: 100%;">
             <div style="display: table-row;">
@@ -99,7 +99,7 @@ export async function POST(request: Request) {
         </div>
         
         <div style="background-color: #f9f9f9; padding: 25px; border-radius: 8px; border-left: 4px solid #D91F10; margin-bottom: 30px;">
-          <h3 style="color: #D91F10; font-size: 18px; margin-top: 0; margin-bottom: 16px; font-weight: 600;">Message</h3>
+          <p style="color: #D91F10; font-size: 18px; margin-top: 0; margin-bottom: 16px; font-weight: 600;">Message</p>
           <p style="color: #303234; margin: 0; line-height: 1.7; white-space: pre-wrap; font-size: 15px;">${validatedData.message}</p>
         </div>
       </div>

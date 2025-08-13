@@ -1,4 +1,4 @@
-// Ce fichier permet de gérer le layout de la page principale
+// This file manages the main page layout
 
 import { Providers } from "@/providers";
 import { Header } from "./components/layout/Header";
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
       <head>
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
