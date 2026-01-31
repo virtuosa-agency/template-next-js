@@ -16,7 +16,6 @@ interface HeaderProps {
 export function Header({ className = "" }: HeaderProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isAtTop, setIsAtTop] = useState(true);
   const [shouldShowBackground, setShouldShowBackground] = useState(false);
   const lastScrollY = useRef(0);
   const [mounted, setMounted] = useState(false);
@@ -26,9 +25,7 @@ export function Header({ className = "" }: HeaderProps) {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Check if we're on the home page and on mobile
   const isHomePage = pathname === "/";
-  const shouldUseWhiteOnMobile = isHomePage;
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -43,7 +40,8 @@ export function Header({ className = "" }: HeaderProps) {
   }, [mobileMenuOpen]);
 
   useEffect(() => {
-    setMounted(true);
+    const id = requestAnimationFrame(() => setMounted(true));
+
     const handleScroll = () => {
       if (!mobileMenuOpen) {
         const currentScrollY = window.scrollY;
@@ -51,9 +49,7 @@ export function Header({ className = "" }: HeaderProps) {
         const isNearTop = currentScrollY < 50;
 
         setIsVisible(isScrollingUp || isNearTop);
-        setIsAtTop(currentScrollY === 0);
 
-        // Update background only when scrolling up
         if (isScrollingUp && !isNearTop) {
           setShouldShowBackground(true);
         } else if (isNearTop) {
@@ -68,6 +64,7 @@ export function Header({ className = "" }: HeaderProps) {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
+      cancelAnimationFrame(id);
       window.removeEventListener("scroll", handleScroll);
     };
   }, [mobileMenuOpen]);
@@ -109,6 +106,7 @@ export function Header({ className = "" }: HeaderProps) {
     },
     closed: {},
   };
+
   const mobileMenuItemVariants = {
     closed: { y: 10, opacity: 0 },
     open: {
@@ -146,11 +144,15 @@ export function Header({ className = "" }: HeaderProps) {
 
           {/* Navigation sur desktop */}
           <div className="hidden items-center space-x-8 lg:flex">
-            {navigation.map((item: NavigationItem, index: number) => (
+            {navigation.map((item: NavigationItem) => (
               <div key={item.name}>
                 <Link
                   href={item.href}
-                  className={`group relative text-sm uppercase tracking-wide transition-colors duration-300 ${isHomePage && !shouldShowBackground ? "hover:text-secondary/75" : "hover:text-secondary/75"}`}
+                  className={`group relative text-sm uppercase tracking-wide transition-colors duration-300 ${
+                    isHomePage && !shouldShowBackground
+                      ? "hover:text-secondary/75"
+                      : "hover:text-secondary/75"
+                  }`}
                 >
                   {item.name}
                 </Link>

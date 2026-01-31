@@ -5,22 +5,32 @@ export default function rateLimit({
   interval: number;
   uniqueTokenPerInterval?: number;
 }) {
-  const tokens = new Map();
+  const tokens = new Map<string, number[]>();
 
   return {
     check: (limit: number, token: string) =>
-      new Promise((resolve, reject) => {
-        const tokenCount = tokens.get(token) || [0];
+      new Promise<boolean>((resolve, reject) => {
         const now = Date.now();
-        const oldTokens = tokenCount.filter(
-          (timestamp: number) => now - timestamp < interval,
+        const timestamps = tokens.get(token) || [];
+
+        const validTimestamps = timestamps.filter(
+          (timestamp) => now - timestamp < interval,
         );
-        const newTokens = [...oldTokens, now];
 
-        tokens.set(token, newTokens);
+        validTimestamps.push(now);
+        tokens.set(token, validTimestamps);
 
-        if (newTokens.length > limit) {
-          reject();
+        // Protection mémoire : limiter le nombre de tokens stockés
+        if (tokens.size > uniqueTokenPerInterval) {
+          const oldestKey = tokens.keys().next().value;
+
+          if (oldestKey !== undefined) {
+            tokens.delete(oldestKey);
+          }
+        }
+
+        if (validTimestamps.length > limit) {
+          reject(new Error("Rate limit exceeded"));
         } else {
           resolve(true);
         }

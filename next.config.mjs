@@ -1,19 +1,6 @@
 // next.config.mjs est le fichier de configuration pour Next.js
 
 import bundleAnalyzer from "@next/bundle-analyzer";
-import createJiti from "jiti";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-const jiti = createJiti(fileURLToPath(import.meta.url));
-
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-  openAnalyzer: false,
-});
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -52,5 +39,10 @@ const nextConfig = {
     ];
   },
 };
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+  openAnalyzer: false,
+});
 
 export default withBundleAnalyzer(nextConfig);
