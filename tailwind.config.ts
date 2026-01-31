@@ -1,3 +1,5 @@
+import type { Config } from "tailwindcss";
+
 // Here you define the global styles of your application but especially the screen size variants
 // You also define the main colors of your application
 // You define the fonts of your application
@@ -5,8 +7,7 @@
 // You define the animations of your application
 // You define the themes of your application
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -33,23 +34,10 @@ module.exports = {
       fontFamily: {
         syne: ["Syne", "sans-serif"],
       },
-      spacing: {
-        24: "24px",
-        36: "36px",
-        48: "48px",
-        60: "60px",
-        72: "72px",
-        84: "84px",
-        96: "96px",
-        108: "108px",
-        120: "120px",
-        132: "132px",
-        144: "144px",
-        156: "156px",
-        168: "168px",
-      },
     },
   },
   plugins: [],
   darkMode: "class",
 };
+
+export default config;
