@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
+import { contactSchema } from "@/lib/contact-schema";
 import rateLimit from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
@@ -8,27 +9,6 @@ export const runtime = "nodejs";
 const limiter = rateLimit({
   interval: 60 * 1000, // 1 minute
   uniqueTokenPerInterval: 500,
-});
-
-// Schema adapted for the Next.js template contact form
-const contactSchema = z.object({
-  name: z
-    .string()
-    .min(2, "Name must contain at least 2 characters")
-    .max(50, "Name cannot exceed 50 characters"),
-  email: z
-    .string()
-    .email("Invalid email format")
-    .regex(
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      "Invalid email format"
-    ),
-  message: z
-    .string()
-    .min(5, "Message must contain at least 5 characters")
-    .max(1000, "Message cannot exceed 1000 characters"),
-  honeypot: z.string().max(0).optional(),
-  formType: z.string().optional(),
 });
 
 export async function POST(request: Request) {
@@ -50,7 +30,7 @@ export async function POST(request: Request) {
     } catch {
       return NextResponse.json(
         { error: "Too many requests. Please try again later." },
-        { status: 429 }
+        { status: 429 },
       );
     }
 
@@ -119,14 +99,14 @@ export async function POST(request: Request) {
       console.error("Detailed Resend error:", JSON.stringify(error));
       return NextResponse.json(
         { error: "Error sending email", details: error },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     if (!data?.id) {
       return NextResponse.json(
         { error: "Email could not be sent" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -140,12 +120,12 @@ export async function POST(request: Request) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: error.errors[0].message },
-        { status: 400 }
+        { status: 400 },
       );
     }
     return NextResponse.json(
       { error: "Error processing the request" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

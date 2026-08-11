@@ -1,14 +1,12 @@
-"use client";
-
 import Link from "next/link";
 
 export default function NotFound() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-white">
-      <div className="mx-auto max-w-md px-6 text-center">
+      <div className="mx-auto px-6 text-center">
         <div className="mb-8">
           <p className="text-8xl font-bold text-gray-900">404</p>
-          <div className="mt-4 h-px w-16 bg-gray-300 mx-auto"></div>
+          <div className="mx-auto mt-4 h-px w-16 bg-gray-300" />
         </div>
 
         <p className="mb-4 text-2xl font-medium text-gray-900">

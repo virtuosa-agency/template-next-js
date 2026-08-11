@@ -1,43 +1,30 @@
-// This file manages the main page layout
+import type { ReactNode } from "react";
 
-import { Providers } from "@/providers";
-import { Header } from "./components/layout/Header";
-import Script from "next/script";
-
-import { getPageMetadata } from "@/utils/meta/metadata";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import {
+  metadata as siteMetadata,
+  viewport as siteViewport,
+} from "@/utils/meta/metadata";
 import { jsonLd } from "@/utils/meta/jsonLd";
 import "@/styles/_index.scss";
 
-import { Canonical } from "@/components/Canonical";
-import { Footer } from "@/components/layout/Footer";
+export const metadata = siteMetadata;
+export const viewport = siteViewport;
 
-export const metadata = getPageMetadata();
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
-      <head>
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
-        <Canonical />
-      </head>
-      <body className="overflow-x-hidden">
-        <div className="z-1 relative">
-          <Providers>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </Providers>
-        </div>
-        <Script
-          id="json-ld"
+    <html lang="en">
+      <body>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          // Prevent </script> breakout if content ever includes user-controlled strings
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
         />
       </body>
     </html>

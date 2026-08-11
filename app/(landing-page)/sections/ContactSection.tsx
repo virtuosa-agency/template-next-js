@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { PrimaryButton } from "@/components/buttons/PrimaryButton";
@@ -5,26 +7,7 @@ import { Icon } from "@iconify/react";
 import { contactInfos } from "@/data/contact-infos";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-
-const contactSchema = z.object({
-  name: z
-    .string()
-    .min(2, "Name must contain at least 2 characters")
-    .max(50, "Name must not exceed 50 characters"),
-  email: z
-    .string()
-    .email("Invalid email address")
-    .min(5, "Email must contain at least 5 characters")
-    .max(100, "Email must not exceed 100 characters"),
-  message: z
-    .string()
-    .min(5, "Your message must contain at least 5 characters")
-    .max(1000, "Your message must not exceed 1000 characters"),
-  honeypot: z.string().max(0, "Invalid field").optional(),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+import { contactSchema, type ContactFormData } from "@/lib/contact-schema";
 
 export const ContactSection = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -75,19 +58,18 @@ export const ContactSection = () => {
 
   return (
     <SectionLayout className="relative" id="contact">
-      <div className="grid w-full grid-cols-1 gap-0 lg:grid-cols-2 lg:gap-24">
+      <div className="grid w-full grid-cols-1 gap-0 lg:grid-cols-2 lg:gap-6">
         <div className="flex flex-col gap-[32px]">
-          <div className="flex flex-col gap-[18px]">
+          <div className="flex flex-col gap-4">
             <p className="font-syne text-[26px] text-secondary md:text-[32px]">
-              Template Contact Section
+              Get in touch
             </p>
             <p className="text-lg text-secondary/75">
-              This is a demo contact form for the Next.js template. Replace with
-              your actual contact information.
+              Replace this copy and the contact details below with your own.
             </p>
           </div>
 
-          <div className="flex flex-col gap-24">
+          <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4">
               <Icon icon="mdi:email" className="h-8 w-8 text-secondary" />
               <span className="text-lg text-secondary/75">
@@ -113,7 +95,7 @@ export const ContactSection = () => {
         </div>
 
         <div className="relative">
-          <div className="relative translate-y-[80px] rounded-xl border-[1px] bg-primary p-8 shadow-sm lg:absolute lg:bottom-[-100px] lg:right-0 lg:w-full lg:max-w-2xl lg:translate-y-0">
+          <div className="relative translate-y-[80px] rounded-xl border-[1px] bg-primary p-8 shadow-sm lg:absolute lg:bottom-[-100px] lg:right-0 lg:w-full lg:translate-y-0">
             {formSubmitted ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-[3px] border-tertiary">
@@ -123,8 +105,8 @@ export const ContactSection = () => {
                   Message sent!
                 </p>
                 <p className="mb-8 text-secondary/75">
-                  Thank you for contacting us. We&apos;ll get back to you as soon as
-                  possible.
+                  Thank you for contacting us. We&apos;ll get back to you as
+                  soon as possible.
                 </p>
                 <PrimaryButton
                   text="NEW MESSAGE"

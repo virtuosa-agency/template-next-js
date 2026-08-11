@@ -1,26 +1,12 @@
 // Ce fichier permet de gérer les styles globaux
 
-:root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 html {
   scroll-behavior: smooth;
   height: 100%;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Syne", sans-serif;
   background-color: #ffffff;
   color: #303234;
   font-size: 16px;

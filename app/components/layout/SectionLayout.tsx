@@ -21,9 +21,9 @@ export const SectionLayout = ({
       id={id}
       className={cn(
         "flex w-full flex-col items-center justify-center",
-        !noPaddingX && "px-1 ph:px-6 md:px-12 lg:px-18 xl:px-24",
+        !noPaddingX && "px-4 ph:px-6 md:px-12 lg:px-18 xl:px-24",
         !noPaddingY && "py-12",
-        className
+        className,
       )}
     >
       {children}
