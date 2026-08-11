@@ -1,127 +1,112 @@
-// metadata.ts est le fichier de configuration pour le SEO de votre application
+import type { Metadata, Viewport } from "next";
 
-import { Metadata } from "next";
+export const siteConfig = {
+  name: "Template Next JS",
+  description:
+    "A modern Next.js template for building professional landing pages.",
+  url: process.env.NEXT_PUBLIC_BASE_URL || "https://www.yourdomain.com",
+  locale: "en_US",
+  email: "hello@yourdomain.com",
+  phone: "+33 1 23 45 67 89",
+  twitter: "@yourcompany",
+  /** Replace `public/images/og.png` (1200×630) when customizing the template. */
+  ogImage: {
+    path: "/images/og.png",
+    width: 1200,
+    height: 630,
+  },
+} as const;
 
-const title = "Template Next JS";
-const description = "Template Next JS";
+type PageMetadataOptions = {
+  path?: string;
+  title?: string;
+  description?: string;
+};
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://www.template-next-js.com";
+function absoluteUrl(path: string = ""): string {
+  const normalized = path.replace(/^\/+/, "");
+  return normalized ? `${siteConfig.url}/${normalized}` : siteConfig.url;
+}
 
-export function getPageMetadata(path: string = ""): Metadata {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
+
+export function getPageMetadata({
+  path = "",
+  title = siteConfig.name,
+  description = siteConfig.description,
+}: PageMetadataOptions = {}): Metadata {
+  const url = absoluteUrl(path);
+  const isHome = path === "" || path === "/";
+  const fullTitle = isHome ? siteConfig.name : `${title} | ${siteConfig.name}`;
+  const ogImage = {
+    url: siteConfig.ogImage.path,
+    width: siteConfig.ogImage.width,
+    height: siteConfig.ogImage.height,
+    alt: fullTitle,
+  };
+
   return {
-    metadataBase: new URL(baseUrl),
-    title: {
-      default: title,
-      template: `%s | ${title}`,
-    },
+    metadataBase: new URL(siteConfig.url),
+    title: isHome
+      ? {
+          default: siteConfig.name,
+          template: `%s | ${siteConfig.name}`,
+        }
+      : title,
     description,
-    keywords: ["template", "nextjs", "template nextjs"],
-    authors: [
-      {
-        name: "Virtuosa",
-        url: baseUrl,
-      },
-    ],
-    creator: "Virtuosa - Agence Web Premium",
-    publisher: "Virtuosa",
+    authors: [{ name: siteConfig.name, url: siteConfig.url }],
+    creator: siteConfig.name,
+    publisher: siteConfig.name,
     icons: {
       icon: [
-        {
-          url: "/favicon-96x96.png",
-          sizes: "96x96",
-          type: "image/png",
-        },
-        {
-          url: "/favicon.svg",
-          type: "image/svg+xml",
-        },
-        {
-          url: "/favicon.ico",
-          sizes: "any",
-        },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon.ico", sizes: "any" },
       ],
-      shortcut: "/favicon-96x96.png",
+      shortcut: "/favicon.ico",
       apple: [
-        {
-          url: "/apple-touch-icon.png",
-          sizes: "180x180",
-          type: "image/png",
-        },
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
       ],
     },
+    manifest: "/site.webmanifest",
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
-      title,
+      title: fullTitle,
       description,
-      url: baseUrl,
-      siteName: "Template Next JS",
-      images: [
-        {
-          url: `${baseUrl}/api/og`,
-          width: 1200,
-          height: 630,
-          alt: "Template Next JS",
-        },
-      ],
-      locale: "fr_FR",
-      alternateLocale: "fr_FR",
+      url,
+      siteName: siteConfig.name,
+      locale: siteConfig.locale,
       type: "website",
-      countryName: "France",
-      emails: ["contact@template-next-js.com"],
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: fullTitle,
       description,
-      creator: "@virtuosa",
-      site: "@virtuosa",
+      creator: siteConfig.twitter,
+      site: siteConfig.twitter,
+      images: [ogImage.url],
     },
     robots: {
       index: true,
       follow: true,
-      nocache: true,
-      nosnippet: false,
-      notranslate: false,
-      noimageindex: false,
-      noarchive: false,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
       googleBot: {
         index: true,
         follow: true,
-        noimageindex: false,
-        "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,
+        "max-video-preview": -1,
       },
     },
-    alternates: {
-      languages: {
-        "fr-FR": path ? `${baseUrl}/${path}` : baseUrl,
-      },
-    },
-    manifest: "/site.webmanifest",
     other: {
-      "geo.region": "FR",
-      "geo.placename": "Paris",
-      "geo.position": "48.8566;2.3522",
-      ICBM: "48.8566, 2.3522",
-      "place:location:latitude": "48.8566",
-      "place:location:longitude": "2.3522",
-      "business:contact_data:locality": "Paris",
-      "business:contact_data:country_name": "France",
-      "business:contact_data:email": "contact@virtuosa.fr",
-      "business:contact_data:phone_number": "07 67 28 48 62",
-      generator: "Next.js",
-      "application-name": "Virtuosa",
-      "apple-mobile-web-app-title": "Virtuosa",
-    },
-    verification: {
-      other: {
-        priority: "1.0",
-        changefreq: "daily",
-      },
+      "application-name": siteConfig.name,
+      "apple-mobile-web-app-title": siteConfig.name,
     },
   };
 }

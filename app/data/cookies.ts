@@ -72,7 +72,7 @@ export const cookiesData: CookieArticle[] = [
           "For any questions regarding our use of cookies, contact us at:",
       },
       {
-        contactInfo: "contact@example.com",
+        contactInfo: "hello@yourdomain.com",
       },
     ],
   },

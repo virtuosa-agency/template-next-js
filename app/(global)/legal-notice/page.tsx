@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { BannerSection } from "@/components/sections/BannerSection";
-import { cookiesData } from "@/data/cookies";
+import { legalData } from "@/data/legal-notice";
 import { BreadcrumbHomepage } from "@/components/sections/BreadcrumbHomepage";
 
-export default function CookiesPage() {
+export default function LegalNoticePage() {
   const [openArticles, setOpenArticles] = useState<number[]>(
-    Array.from({ length: cookiesData.length }, (_, index) => index),
+    Array.from({ length: legalData.length }, (_, index) => index),
   );
 
   const toggleArticle = (index: number) => {
@@ -17,7 +17,7 @@ export default function CookiesPage() {
     );
   };
 
-  const renderContent = (content: (typeof cookiesData)[0]["content"]) => {
+  const renderContent = (content: (typeof legalData)[0]["content"]) => {
     return (
       <div className="flex flex-col gap-4 xl:gap-8">
         {content.map((section, idx) => (
@@ -50,11 +50,11 @@ export default function CookiesPage() {
 
   return (
     <section>
-      <BannerSection title="Cookie Management" />
+      <BannerSection title="Legal Notice" />
       <BreadcrumbHomepage className="text-black" />
       <div className="w-full px-1 py-4 ph:px-6 md:px-12 lg:px-18 xl:px-24">
         <div className="space-y-4 text-black">
-          {cookiesData.map((article, index) => (
+          {legalData.map((article, index) => (
             <div key={index} className="border-b border-b-black">
               <button
                 onClick={() => toggleArticle(index)}

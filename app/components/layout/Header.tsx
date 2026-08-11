@@ -6,8 +6,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { PrimaryButton } from "../buttons/PrimaryButton";
 import { navigation, NavigationItem } from "@/data/navigation";
-import logo from "@/assets/images/logos/logo.svg";
+import WhiteLogo from "@/assets/images/logos/virtuosa-white-logo.png";
+import BlackLogo from "@/assets/images/logos/virtuosa-black-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
+import { handleSamePageAnchorClick } from "@/utils/scrollToAnchor";
 
 interface HeaderProps {
   className?: string;
@@ -116,6 +118,8 @@ export function Header({ className = "" }: HeaderProps) {
     },
   };
 
+  const isOverHero = isHomePage && !shouldShowBackground && !mobileMenuOpen;
+
   return (
     <>
       <header
@@ -133,12 +137,15 @@ export function Header({ className = "" }: HeaderProps) {
           backfaceVisibility: "hidden",
         }}
       >
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
+        <div className="flex w-full items-center justify-between">
           {/* Logo */}
           <div>
             <Link href="/" className="z-50">
-              <Image src={logo} alt="Logo" className="hidden md:block" />
-              <Image src={logo} alt="Logo" className="block md:hidden" />
+              <Image
+                src={isOverHero ? WhiteLogo : BlackLogo}
+                alt="Logo"
+                className="h-36 w-36 object-contain"
+              />
             </Link>
           </div>
 
@@ -148,21 +155,25 @@ export function Header({ className = "" }: HeaderProps) {
               <div key={item.name}>
                 <Link
                   href={item.href}
-                  className={`group relative text-sm uppercase tracking-wide transition-colors duration-300 ${
-                    isHomePage && !shouldShowBackground
-                      ? "hover:text-secondary/75"
-                      : "hover:text-secondary/75"
+                  className={`text-sm uppercase tracking-wide transition-colors duration-300 ${
+                    isOverHero
+                      ? "text-primary/90 hover:text-primary"
+                      : "text-secondary hover:text-secondary/75"
                   }`}
+                  onClick={(event) =>
+                    handleSamePageAnchorClick(item.href, event)
+                  }
                 >
                   {item.name}
                 </Link>
               </div>
             ))}
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <PrimaryButton text="Contact" navigateTo="/#contact" />
-              </div>
-            </div>
+            <PrimaryButton
+              text="Contact"
+              navigateTo="/#contact"
+              variant={isOverHero ? "inverted" : "default"}
+              className="!px-5 !py-2.5 !text-xs"
+            />
           </div>
 
           {/* Bouton menu mobile */}
@@ -177,7 +188,7 @@ export function Header({ className = "" }: HeaderProps) {
                 className="h-8 w-8"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#000000"
+                stroke="currentColor"
                 strokeWidth="2"
               >
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -185,9 +196,21 @@ export function Header({ className = "" }: HeaderProps) {
               </svg>
             ) : (
               <div className="flex flex-col gap-1.5">
-                <span className="block h-0.5 w-8 bg-secondary transition-all duration-300" />
-                <span className="block h-0.5 w-8 bg-secondary transition-all duration-300" />
-                <span className="block h-0.5 w-8 bg-secondary transition-all duration-300" />
+                <span
+                  className={`block h-0.5 w-8 transition-all duration-300 ${
+                    isOverHero ? "bg-primary" : "bg-secondary"
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-8 transition-all duration-300 ${
+                    isOverHero ? "bg-primary" : "bg-secondary"
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-8 transition-all duration-300 ${
+                    isOverHero ? "bg-primary" : "bg-secondary"
+                  }`}
+                />
               </div>
             )}
           </button>
@@ -221,10 +244,8 @@ export function Header({ className = "" }: HeaderProps) {
                     <Link
                       href={item.href}
                       className="block text-xl font-light uppercase transition-colors duration-300"
-                      onClick={(e) => {
-                        if (window.location.pathname === item.href) {
-                          e.preventDefault();
-                        }
+                      onClick={(event) => {
+                        handleSamePageAnchorClick(item.href, event);
                         toggleMenu();
                       }}
                     >
@@ -240,6 +261,7 @@ export function Header({ className = "" }: HeaderProps) {
                     text="Contact"
                     navigateTo="/#contact"
                     className="!text-lg font-light"
+                    onClick={toggleMenu}
                   />
                 </motion.div>
               </motion.div>

@@ -1,15 +1,13 @@
-"use client";
-
 import { HeroSection } from "./sections/HeroSection";
 import { ContactSection } from "./sections/ContactSection";
 import { CTASection } from "./sections/CTASection";
 
 export default function LandingPage() {
   return (
-    <main className="relative min-h-screen">
+    <div className="flex flex-col gap-48">
       <HeroSection />
       <ContactSection />
       <CTASection />
-    </main>
+    </div>
   );
 }

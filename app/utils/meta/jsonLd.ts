@@ -1,72 +1,60 @@
-// app/meta/jsonLd.ts is the configuration file for your application's JSON-LD
+import { siteConfig } from "@/utils/meta/metadata";
+
+const organizationId = `${siteConfig.url}/#organization`;
+const websiteId = `${siteConfig.url}/#website`;
+
+/** E.164-ish phone for Schema.org (digits + leading +) */
+function toSchemaTelephone(phone: string): string {
+  const digits = phone.replace(/[^\d+]/g, "");
+  return digits.startsWith("+") ? digits : `+${digits}`;
+}
 
 export const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Template Next JS",
-  alternateName: "Template Next JS",
-  url: "https://www.template-next-js.com",
-  logo: "https://www.template-next-js.com/images/logo.png",
-  image: "https://www.template-next-js.com/api/og",
-  description:
-    "Premium digital solutions have never been so accessible. Website, brand identity, notoriety: we build everything, custom-made.",
-  areaServed: {
-    "@type": "Country",
-    name: "France",
-    "@id": "https://www.wikidata.org/wiki/Q142",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount: "10",
-  },
-  makesOffer: [
+  "@graph": [
     {
-      "@type": "Offer",
-      name: "Website Creation",
-      description: "Custom websites, premium design and optimized development",
-    },
-    {
-      "@type": "Offer",
-      name: "Brand Identity",
-      description: "Complete visual identity and brand strategy",
-    },
-    {
-      "@type": "Offer",
-      name: "Digital Notoriety",
-      description: "Visibility strategy and online presence development",
-    },
-  ],
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Paris",
-    addressCountry: "FR",
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "07 67 28 48 62",
-    contactType: "customer service",
-    email: "contact@virtuosa.fr",
-    availableLanguage: ["French", "English"],
-  },
-  potentialAction: {
-    "@type": "ContactAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://www.virtuosa.fr/contact",
-      actionPlatform: [
-        "http://schema.org/DesktopWebPlatform",
-        "http://schema.org/MobileWebPlatform",
+      "@type": "Organization",
+      "@id": organizationId,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/android-chrome-512x512.png`,
+        width: 512,
+        height: 512,
+      },
+      image: `${siteConfig.url}${siteConfig.ogImage.path}`,
+      description: siteConfig.description,
+      email: siteConfig.email,
+      telephone: toSchemaTelephone(siteConfig.phone),
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "123 Example Street",
+        addressLocality: "Paris",
+        postalCode: "75000",
+        addressCountry: "FR",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: toSchemaTelephone(siteConfig.phone),
+        contactType: "customer service",
+        email: siteConfig.email,
+        availableLanguage: ["en", "fr"],
+      },
+      sameAs: [
+        "https://www.linkedin.com/company/yourcompany",
+        "https://twitter.com/yourcompany",
+        "https://www.instagram.com/yourcompany",
       ],
     },
-    result: {
-      "@type": "ContactPoint",
-      name: "Contact Request",
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: siteConfig.url,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      inLanguage: "en",
+      publisher: { "@id": organizationId },
     },
-  },
-  sameAs: [
-    "https://www.linkedin.com/company/virtuosa",
-    "https://twitter.com/virtuosa",
-    "https://www.instagram.com/virtuosa",
   ],
 };

@@ -8,8 +8,8 @@ export const BreadcrumbHomepage = ({ className }: { className?: string }) => {
   return (
     <section
       className={cn(
-        "flex w-full flex-row justify-start px-4 pt-8 ph:px-24 md:px-48 lg:px-72 xl:px-96",
-        className
+        "flex w-full flex-row justify-start px-1 pb-4 pt-2 ph:px-6 md:px-12 lg:px-18 xl:px-24",
+        className,
       )}
     >
       <div>

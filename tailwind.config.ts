@@ -1,15 +1,7 @@
 import type { Config } from "tailwindcss";
 
-// Here you define the global styles of your application but especially the screen size variants
-// You also define the main colors of your application
-// You define the fonts of your application
-// You define the spacing of your application
-// You define the animations of your application
-// You define the themes of your application
-
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -34,10 +26,16 @@ const config: Config = {
       fontFamily: {
         syne: ["Syne", "sans-serif"],
       },
+      spacing: {
+        18: "4.5rem",
+        120: "30rem",
+      },
+      zIndex: {
+        1: "1",
+      },
     },
   },
   plugins: [],
-  darkMode: "class",
 };
 
 export default config;
